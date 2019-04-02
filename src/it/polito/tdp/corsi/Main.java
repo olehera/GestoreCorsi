@@ -1,5 +1,4 @@
 package it.polito.tdp.corsi;
-	
 
 import it.polito.tdp.corsi.model.GestoreCorsi;
 import javafx.application.Application;
@@ -7,7 +6,6 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
-
 
 public class Main extends Application {
 	@Override
