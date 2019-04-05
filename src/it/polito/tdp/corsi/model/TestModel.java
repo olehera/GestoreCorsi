@@ -15,7 +15,7 @@ public class TestModel {
 		
 		Map<Corso, Integer> res = model.getIscrittiCorsi(1);
 		
-		for (Entry entry : res.entrySet()) {
+		for (Entry<Corso, Integer> entry : res.entrySet()) {
 			System.out.println(entry.getKey() + "=" + entry.getValue());
 		}
 	}
