@@ -2,7 +2,7 @@ package it.polito.tdp.corsi.model;
 
 public class Studente {
 	
-	private int matricola;
+	private Integer matricola;
 	private String cognome;
 	private String nome;
 	private String cds;
@@ -50,7 +50,7 @@ public class Studente {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + matricola;
+		result = prime * result + ((matricola == null) ? 0 : matricola.hashCode());
 		return result;
 	}
 
@@ -63,7 +63,10 @@ public class Studente {
 		if (getClass() != obj.getClass())
 			return false;
 		Studente other = (Studente) obj;
-		if (matricola != other.matricola)
+		if (matricola == null) {
+			if (other.matricola != null)
+				return false;
+		} else if (!matricola.equals(other.matricola))
 			return false;
 		return true;
 	}

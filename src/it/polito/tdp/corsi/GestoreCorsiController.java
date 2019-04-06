@@ -2,6 +2,7 @@ package it.polito.tdp.corsi;
 
 import java.net.URL;
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.corsi.model.Corso;
@@ -15,7 +16,7 @@ import javafx.scene.control.TextField;
 
 public class GestoreCorsiController {
 	
-	GestoreCorsi model;
+	private GestoreCorsi model;
 	
 	public void setModel(GestoreCorsi m) {
 		model = m;
@@ -55,15 +56,34 @@ public class GestoreCorsiController {
 
     @FXML
     void doCalcolaStatCorsi(ActionEvent event) {
+    	txtResult.clear();
+    	int periodo;
+    	
+    	try {
+    		periodo = Integer.parseInt(txtPeriodo.getText().trim());
+    	} catch (NumberFormatException e) {
+    		txtResult.appendText("Devi inserire un periodo (1 o 2)");
+    		return;
+    	}
+    	if(periodo != 1 && periodo != 2) {
+    		txtResult.appendText("Devi inserire un periodo (1 o 2)");
+    		return;
+    	}
+    	
+    	Map<Corso,Integer> res = model.getIscrittiCorsi(periodo);
+		
+		for(Entry<Corso, Integer> entry : res.entrySet()) 
+			txtResult.appendText(((Corso)entry.getKey()).getNome() + "=" + entry.getValue() + "\n");
 
     }
 
     @FXML
     void doCercaCorsi(ActionEvent event) {
+    	txtResult.clear();
     	int periodo;
     	
     	try {
-    		periodo = Integer.parseInt(txtPeriodo.getText());
+    		periodo = Integer.parseInt(txtPeriodo.getText().trim());
     	} catch(NumberFormatException nfe) {
     		txtResult.appendText("Devi inserire un periodo (1 0 2)");
     		return;
@@ -75,14 +95,15 @@ public class GestoreCorsiController {
     	
     	List<Corso> corsi = this.model.getCorsiByPeriodo(periodo);
     	
-    	for (Corso c : corsi) {
+    	for (Corso c : corsi) 
     		txtResult.appendText(c.toString()+"\n");
-    	}
+    	
     }
     
     @FXML
     void doElencaStudenti(ActionEvent event) {
-    	String codins = txtCorso.getText();
+    	txtResult.clear();
+    	String codins = txtCorso.getText().trim();
     	List<Studente> studenti = this.model.elencaStudenti(codins);
     	
     	for (Studente s : studenti)

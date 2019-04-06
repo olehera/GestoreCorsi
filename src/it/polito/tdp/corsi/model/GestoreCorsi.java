@@ -6,8 +6,10 @@ import it.polito.tdp.corsi.db.StudenteDAO;
 
 public class GestoreCorsi {
 	
+	CorsoDAO cdao = new CorsoDAO();
+	StudenteDAO sdao = new StudenteDAO();
+	
 	public List<Corso> getCorsiByPeriodo(int periodo) {
-		CorsoDAO dao = new CorsoDAO();
 		
 		/* Soluzione 1
 		 * 
@@ -22,19 +24,15 @@ public class GestoreCorsi {
 		*/ 
 		
 		// Soluzione 2
-		return dao.listAll(periodo);
+		return cdao.listCorsiByPD(periodo);
 	}
 	
 	public Map<Corso, Integer> getIscrittiCorsi(int periodo) {
-		CorsoDAO dao = new CorsoDAO();
-		
-		return dao.getIscrittiCorsi(periodo);
+		return cdao.getIscrittiCorsi(periodo);
 	}
 	
 	public List<Studente> elencaStudenti(String codins) {
-		StudenteDAO dao = new StudenteDAO();
-		
-		return dao.getElencoStudenti(codins);
+		return sdao.getElencoStudenti(codins);
 	}
 
 }
