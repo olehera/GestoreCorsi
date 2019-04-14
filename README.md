@@ -2,7 +2,7 @@
 
 Realizzare un programma `JavaFX` che gestisca un elenco di corsi universitari.
 
-Il programma si basa sul database **iscritticorsi**, diponibile nella cartella **db** di questo progetto. Nella stessa cartella √® presente il [diagramma entit√†-relazioni](db/iscritticorsi/diagrammaER.PNG).
+Il programma si basa sul database **iscritticorsi**, diponibile nella cartella **db** di questo progetto. Nella stessa cartella Ë presente il [diagramma entit‡†-relazioni](db/iscritticorsi/diagrammaER.PNG).
 
 Il programma deve permettere all'utente di:
 
